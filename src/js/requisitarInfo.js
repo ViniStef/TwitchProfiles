@@ -1,11 +1,10 @@
-require('dotenv').config();
-
-const token = process.env.ACESS_TOKEN;
+const token = import.meta.env.VITE_ACESS_TOKEN;
+const clientID = import.meta.env.VITE_CLIENT_ID;
 
 const headers = {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`,
-    'Client-Id': 'qwdxuni9th0t2id7pvobq3f1cd8iuq'
+    'Client-Id':  `${clientID}`
 }
 
 let usuario = ""

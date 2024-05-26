@@ -1,11 +1,10 @@
-// require('dotenv').config();
+const token =import.meta.env.VITE_ACESS_TOKEN;
+const clientID =import.meta.env.VITE_CLIENT_ID;
 
-const token = process.env.ACESS_TOKEN;
-
-const headers = {
+const headers = { 
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`,
-    'Client-Id': 'qwdxuni9th0t2id7pvobq3f1cd8iuq'
+    'Authorization': 'Bearer tpv4cju579g8ut7bqt6n772dodokcm', 
+    'Client-Id': 'qwdxuni9th0t2id7pvobq3f1cd8iuq' 
 }
 
 let usuario = ""
@@ -39,9 +38,12 @@ document.querySelector('#canalOuUsuario').addEventListener('keyup', () => {
     }
 })
 
+const abaixoBusca = document.querySelector('.abaixo_busca')
+const resultado =  document.querySelector('.result_busca')
+
 document.addEventListener('click', (e) => {
     if (e.target['id'] == 'fecharBusca') {
-        document.querySelector('.abaixo_busca').classList.remove('focused-opacity')
+        abaixoBusca.classList.remove('focused-opacity')
         resultado.classList.add('remove-animation')
         resultado.classList.remove('show-search')
     }else {
@@ -69,6 +71,7 @@ $('#formBusca').submit(function(e) {
     $('.carregando').css('display', 'inline')
     $('.campo_result_busca_itens').css('display', 'none');
     $('.result_busca_itens').addClass('searched')
+    console.log(usuario)
     if (usuario == $('#canalOuUsuario').val()) {
         return stop()
     }
@@ -79,7 +82,7 @@ $('#formBusca').submit(function(e) {
         usuario = $('#canalOuUsuario').val()
         $('#canalOuUsuario').val("")
 
-        resultExato = ""
+        let resultExato = ""
         // Usuario exato.
         twitchRequests(`users?login=${usuario}`,'GET',headers).then(data => {
             
@@ -110,7 +113,7 @@ $('#formBusca').submit(function(e) {
                 if ($('#resultExato').children().length > 0) {
                     $('.carregando').css('display', 'none')
                 }
-                for (i = 0;i < infos.length;i++) {
+                for (let i = 0;i < infos.length;i++) {
                     if (i == infos.length - 1) {
                         img.on('load', () => {
                             $('.carregando').css('display', 'none');

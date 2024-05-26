@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    iniciar = 1;
+    let iniciar = 1;
     $('#slideEsquerda').click(() => {
         if (iniciar == 0) {
             $('#slide1').css({'z-index': '999','transform': 'translate(0%) scale(1)','min-width': '17rem','filter': 'opacity(1)'});

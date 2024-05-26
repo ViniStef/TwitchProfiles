@@ -1,12 +1,12 @@
-var abaixoBusca = document.querySelector('.abaixo_busca');
-var resultado = document.querySelector('.result_busca');
-var buscaInputs = document.querySelectorAll('input');
-var buscando = document.querySelector('input[type="text"]');
-var enviar = document.querySelector('input[type="submit"]');
-var buscaTitulo = document.querySelector('#tituloBusca')
+const abaixoBusca = document.querySelector('.abaixo_busca');
+const resultado = document.querySelector('.result_busca');
+const buscaInputs = document.querySelectorAll('input');
+const buscando = document.querySelector('input[type="text"]');
+const enviar = document.querySelector('input[type="submit"]');
+const buscaTitulo = document.querySelector('#tituloBusca')
 
 // Opacidade
-for (input of buscaInputs) {
+for (let input of buscaInputs) {
     input.addEventListener('focusin', () => {
         abaixoBusca.classList.add('focused-opacity')
     })

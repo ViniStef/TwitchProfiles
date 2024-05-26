@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TwitchInfos - Pesquisar</title>
+    <title>TwitchProfiles - Pesquisar</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./src/css/styles.css">
-    <link rel="stylesheet" href="./src/css/css/twitchBusca.css">
+    <link rel="stylesheet" href="./src/css/twitchBusca.css">
     <link rel="stylesheet" href="./src/css/carroselPrincipal.css">
     <link rel="icon" href="../src/imgs/logoMain.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="./src/favico/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./src/favico/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./src/favico/favicon-16x16.png">
     <link rel="manifest" href="./src/favico/site.webmanifest">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
 </head>
 
 <body>
@@ -74,7 +75,9 @@
                 <button id="slideEsquerda">
                     <img src="" alt="Esquerda">
                 </button>
-                <div class="espaco_carrosel_container">
+
+                <!-- Current not working because of the routes! -->
+                <!-- <div class="espaco_carrosel_container">
                     <ul class="espaco_carrosel">
                         <li class="carrosel_slide">
                             <iframe id="slide1" src="http://localhost:3000/the_happy_hob" alt=""
@@ -97,7 +100,8 @@
                                 style="display: none;"></iframe>
                         </li>
                     </ul>
-                </div>
+                </div> -->
+                
                 <button id="slideDireita">
                     <img src="" alt="Direita">
                 </button>
@@ -229,10 +233,10 @@
     </div>
 
 
-    <script src="./src/js/canalOuUsuarioBusca.js"></script>
-    <script src="./src/js/carroselMain.js"></script>
-    <script src="./src/js/campoBusca.js"></script>
-    <script src="./src/js/animacaoMainInfo.js"></script>
+    <script type="module" src="./src/js/canalOuUsuarioBusca.js"></script>
+    <script type="module" src="./src/js/carroselMain.js"></script>
+    <script type="module" src="./src/js/campoBusca.js"></script>
+    <script type="module" src="./src/js/animacaoMainInfo.js"></script>
 
     <script>
         var contadorCarregados = 0;
