@@ -1,12 +1,14 @@
-const token =import.meta.env.VITE_ACESS_TOKEN;
-const clientID =import.meta.env.VITE_CLIENT_ID;
+import dotenv from 'dotenv';
+dotenv.config();
 
-const headers = { 
+const token = process.env.AUTH_TOKEN;
+const clientID = process.env.CLIENT_ID;
+
+const headers = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer tpv4cju579g8ut7bqt6n772dodokcm', 
-    'Client-Id': 'qwdxuni9th0t2id7pvobq3f1cd8iuq' 
+    'Authorization': `Bearer ${token}`,
+    'Client-Id':  `${clientID}`
 }
-
 let usuario = ""
 let nomeExibido = ""
 
@@ -92,7 +94,7 @@ $('#formBusca').submit(function(e) {
                 let imgPerfil =  data['data'][0]['profile_image_url']
                 let img = $('<img/>', {class: 'img_perfil',src:`${imgPerfil}`,alt: 'Imagem do perfil'})
                 let nome = $(`<p title="${nomeExibido}">${nomeExibido}</p>`)
-                let ver = $(`<a href="http://localhost:3000/${nomeExibido}" target="_blank">Ver</a>`)
+                let ver = $(`<a href="/${nomeExibido}" target="_blank">Ver</a>`)
                 let div = $("<div/>", {class: 'canal_img_nome'})
                 div.append(img,nome,ver)
                 div.appendTo($('#resultExato'))
@@ -127,7 +129,7 @@ $('#formBusca').submit(function(e) {
                         if (nomeExibido != resultExato) {
                             var img = $('<img/>', {class: 'img_perfil',src:`${imgPerfil}`,alt: 'Imagem do perfil'})
                             let nome = $(`<p title="${nomeExibido}">${nomeExibido}</p>`)
-                            let ver = $(`<a href="http://localhost:3000/${usuarioLogin}" target="_blank">Ver</a>`)
+                            let ver = $(`<a href="/${usuarioLogin}" target="_blank">Ver</a>`)
                             let div = $("<div/>", {class: 'canal_img_nome'})
                             div.append(img,nome,ver)
                             div.appendTo($('#canaisEncontrado'))

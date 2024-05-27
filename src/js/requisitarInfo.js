@@ -1,5 +1,8 @@
-const token = import.meta.env.VITE_ACESS_TOKEN;
-const clientID = import.meta.env.VITE_CLIENT_ID;
+import dotenv from 'dotenv';
+dotenv.config();
+
+const token = process.env.AUTH_TOKEN;
+const clientID = process.env.CLIENT_ID;
 
 const headers = {
     'Content-Type': 'application/json',
@@ -49,6 +52,8 @@ $('#formBuscaPagUsuario').on('submit', (e) => {
 $(document).ready(() => {
     allInfo(usuarioPath)
 })
+
+
 
 function allInfo(Usuario) {
     // Apenas carrega o código se o usuário pesquisado for diferente do usuário que está renderizado na página.
@@ -126,7 +131,7 @@ function allInfo(Usuario) {
         })
 
         twitchRequests(`search/channels?query=${usuario}`, 'GET', headers).then(info => {
-            for (i = 0; i < info['data'].length; i++) {
+            for (let i = 0; i < info['data'].length; i++) {
                 if (usuario === info['data'][i]['display_name'] || usuario === info['data'][i]['broadcaster_login']) {
                     
                     if (`${info['data'][i]['broadcaster_language']}` === "") {
@@ -182,7 +187,7 @@ function allInfo(Usuario) {
             } else {
                 // Os emotes para inscritos sempre serão os primeiros requisitados e mostrado,não apenas após pressionar o botão,como os emotes do BTTV e FFZ.
                 $('.campo_imgs_carregando').css('display', 'inline')
-                for (i = 0; i < canalEmotesInfo.length; i++) {
+                for (let i = 0; i < canalEmotesInfo.length; i++) {
                     if (i == canalEmotesInfo.length - 1) {
                         img.on('load', () => {
                             $('.campo_imgs_carregando').css('display', 'none')

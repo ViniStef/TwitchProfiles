@@ -1,8 +1,10 @@
+let liItens = document.querySelectorAll('.espaco_carrosel_seteTv li')
+let seteTvDivItens = document.querySelectorAll('#seteTvEmotes .emote_set_div')
+
 // Botão Esquerdo
 document.querySelector('#slideEsquerda').addEventListener('click', () => {
     let itemExibidoIndex = 0
-    let liItens = document.querySelectorAll('.espaco_carrosel_seteTv li')
-    let seteTvDivItens = document.querySelectorAll('#seteTvEmotes .emote_set_div')
+
     liItens.forEach((li, index) => {
         if (li.classList.contains('main_li')) {
             itemExibidoIndex = index
@@ -43,8 +45,6 @@ document.querySelector('#slideEsquerda').addEventListener('click', () => {
 document.querySelector('#slideDireita').addEventListener('click', () => {
     let itemExibido = document.querySelector('mostrar_li_direita')
     let itemExibidoIndex = 0
-    let liItens = document.querySelectorAll('.espaco_carrosel_seteTv li')
-    let seteTvDivItens = document.querySelectorAll('#seteTvEmotes .emote_set_div')
     liItens.forEach((li, index) => {
         if (li.classList.contains('main_li')) {
             itemExibidoIndex = index

@@ -1,4 +1,4 @@
-class req_7TV_Api {
+export class req_7TV_Api {
 
     emoteSetInfo(usuario) {
         // Variavel criarElemento serve pra não criar elementos 'li' extras a cada vez que o botão for clicado.
