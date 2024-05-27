@@ -1,6 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 const token = process.env.AUTH_TOKEN;
 const clientID = process.env.CLIENT_ID;
 
