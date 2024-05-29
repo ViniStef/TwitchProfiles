@@ -10,8 +10,6 @@ function detectar_visibilidade(itemHtml, funcao_auxiliar) {
 
         let tela_topo_offset = window.scrollY; //Quantidade de scroll.
         let tela_inferior_offset = window.innerHeight + tela_topo_offset; //Altura da tela somado com a quantidade de scroll.
-        console.log("tela inferior offset: ",tela_inferior_offset)
-        console.log("item offset height: ",item.offsetHeight);;
 
         if (tela_inferior_offset >= item.offsetHeight / .5 + item_topo_offset && tela_inferior_offset - (item.offsetHeight + item_topo_offset) < 900) {
             funcao_auxiliar(item);
