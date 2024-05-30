@@ -1,7 +1,7 @@
-class req_ffz_Api {
+export class req_ffz_Api {
 
     emotesInfo(usuarioID) {
-        ffzEmotes = 'EXEC CODIGO'
+        let ffzEmotes = 'EXEC CODIGO'
         document.querySelector('.campo_imgs_carregando').style.display = 'inline'
         document.querySelector('.sem_info_IMG').style.display = 'flex'
         fetch(`https://api.frankerfacez.com/v1/room/id/${usuarioID}`, {
@@ -10,17 +10,12 @@ class req_ffz_Api {
         }).then(resposta => {
             return resposta.json()
         }).then(info => {
-            console.log(info)
             try {
-                console.log('ok')
                 var numeroSet = info['room']['set']
-                console.log(numeroSet)
                 ffzEmotes = info['sets'][`${numeroSet}`]['emoticons']
-                console.log('Emotes Info FFZ: ', ffzEmotes)
             }
             catch (erro) {
                 ffzEmotes = ''
-                console.log('erro')
             }
             if (ffzEmotes.length < 1) {
                 $('.campo_imgs_carregando').css('display', 'none');
@@ -39,7 +34,7 @@ class req_ffz_Api {
                 $('.sem_info_IMG').css('display', 'none')
                 $('#ffzEmotes').css('display', 'inline');
             } else {
-                for (i = 0; i < ffzEmotes.length; i++) {
+                for (let i = 0; i < ffzEmotes.length; i++) {
                     if (i == ffzEmotes.length - 1) {
                         img.on('load', () => {
                             $('.campo_imgs_carregando').css('display', 'none');

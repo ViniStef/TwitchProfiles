@@ -105,31 +105,31 @@
               <p id="descricaoUsuario" class="bckgrnd-black5rad"></p>
             </div>
             <div class="campo_infos info_secao1">
-              <p id="visualizacoes" title="Visualizações">
+              <p id="tipoCanal" title="Tipo de Canal">
+                <img
+                  src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="%23fff" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>'
+                /><span class="bckgrnd-black5rad"></span>
+              </p>
+              <!-- <p id="visualizacoes" title="Visualizações">
                 <img
                   src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="%23fff" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>'
                 /><span class="bckgrnd-black5rad"></span>
-              </p>
+              </p> -->
               <p id="criadaEm" title="Criada Em">
                 <img
                   src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="%23fff" class="bi bi-calendar-event-fill" viewBox="0 0 16 16"><path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/></svg>'
                 /><span class="bckgrnd-black5rad"></span>
               </p>
-              <p id="seguidores" title="Seguidores">
+              <!-- <p id="seguidores" title="Seguidores">
                 <img
                   src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="%23fff" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>'
                 /><span class="pepeg bckgrnd-black5rad"></span>
-              </p>
+              </p> -->
             </div>
             <div class="campo_infos info_secao2">
               <p id="aoVivo" title="Ao Vivo?">
                 <img
                   src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="%23fff" class="bi bi-camera-video-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/></svg>'
-                /><span class="bckgrnd-black5rad"></span>
-              </p>
-              <p id="tipoCanal" title="Tipo de Canal">
-                <img
-                  src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="%23fff" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>'
                 /><span class="bckgrnd-black5rad"></span>
               </p>
               <p id="equipeCanal" title="Equipe">
@@ -172,7 +172,9 @@
           </div>
         </section>
         <hr />
-        <section>
+
+        <!-- Not Working because the functionality is gone from twitch's API -->
+        <!-- <section>
           <div class="usuario_seguindo">
             <h1 id="seguindoH1"><span class="bckgrnd-black5rad"></span></h1>
             <form id="formSeguindo">
@@ -190,7 +192,7 @@
                 <img id="usuarioEsqrdIMG" src='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300px" height="300px" fill="%231c1c1c" class="bi bi-emoji-smile-fill" viewBox="0 0 16 16"%3E%3Cpath d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"%3E%3C/svg%3E'>
 
                 />
-                <!-- <img id="fromIMG2" src="imgs/placeholderCinza.png"> -->
+                
                 <div class="corte_meio"></div>
                 <img
                   id="resultSeguindo"
@@ -202,11 +204,12 @@
                   id="usuarioDireitaIMG"
                   src="../imgs/placeholderCinza.png"
                 />
-                <!-- <img id="toIMG2" src="imgs/placeholderCinza.png"> -->
+                
               </div>
             </form>
           </div>
-        </section>
+        </section> -->
+
       </div>
 
       <div class="info_direita">
@@ -223,10 +226,12 @@
               <button id="bttvBtn" title="Emotes BetterTTV"></button>
               <p>Emotes<br />BetterTTV</p>
             </div>
-            <div>
+
+            <!-- // A API do 7tv não está funcionando no momento! -->
+            <!-- <div>
               <button id="seteTvBtn" title="Emotes 7TV"></button>
               <p>Emotes<br />7TV</p>
-            </div>
+            </div> -->
             <div>
               <button id="ffzBtn" title="Emotes FrankerFaceZ"></button>
               <p>Emotes<br />FrankerFZ</p>

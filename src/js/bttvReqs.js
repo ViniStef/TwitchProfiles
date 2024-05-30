@@ -1,7 +1,7 @@
-class req_bttv_Api {
+export class req_bttv_Api {
 
     emotesInfo(usuarioID) {
-        bttvEmotes = 'EXEC CODIGO'
+        let bttvEmotes = 'EXEC CODIGO'
         document.querySelector('.campo_imgs_carregando').style.display = 'inline'
         document.querySelector('.sem_info_IMG').style.display = 'flex'
         fetch(`https://api.betterttv.net/3/cached/users/twitch/${usuarioID}`, {
@@ -10,7 +10,6 @@ class req_bttv_Api {
         }).then(resposta => {
             return resposta.json()
         }).then(info => {
-            console.log(info, 'bttv info')
             try {
                 // Se o usuário for encontrado mas não tiver nenhum emote, retornará '' como resposta.
                 bttvEmotes = info['channelEmotes'].concat(info['sharedEmotes'])
@@ -19,8 +18,6 @@ class req_bttv_Api {
                 // Se o servidor responder com o código 404, significa que o usuário não foi encontrado, indicando provavelmente que o usuário nunca se conectou ao site do Bttv.
                 // Colocar o valor como '' para não ter código extra exibindo o mesmo conteúdo.
                 bttvEmotes = ''
-                console.log(bttvEmotes, 'Todos os bttv emotes')
-                console.log(erro)
             }
             if (bttvEmotes == '') {
                 document.querySelector('.campo_imgs_carregando').style.display = 'none';
@@ -30,8 +27,7 @@ class req_bttv_Api {
                 document.querySelector('#bttvEmotes').append(h3)
                 document.querySelector('.sem_info_IMG').style.display = 'flex';
             } else {
-                console.log(bttvEmotes)
-                for (i = 0; i < bttvEmotes.length; i++) {
+                for (let i = 0; i < bttvEmotes.length; i++) {
                     if (i == bttvEmotes.length - 1) {
                         img.addEventListener('load', () => {
                             document.querySelector('.sem_info_IMG').style.display = 'none';

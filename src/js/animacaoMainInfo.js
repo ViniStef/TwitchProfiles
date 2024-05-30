@@ -24,8 +24,10 @@ function detectar_visibilidade(itemHtml, funcao_auxiliar) {
     document.addEventListener('scroll', calcular.bind(null, itemHtml, funcao_auxiliar));
 }
 
-let itens_Html = ['#bttv', '#ffz', '#seteTv', '#twitch']
-let itens_HtmlImg = ['#bttvImg', '#ffzImg', '#seteTvImg', '#twitchImg']
+// let itens_Html = ['#bttv', '#ffz', '#seteTv', '#twitch']
+let itens_Html = ['#bttv', '#ffz', '#twitch']
+// let itens_HtmlImg = ['#bttvImg', '#ffzImg', '#seteTvImg', '#twitchImg']
+let itens_HtmlImg = ['#bttvImg', '#ffzImg', '#twitchImg']
 
 window.addEventListener('resize', (e) => {
     let windowWidth = window.innerWidth;

@@ -677,9 +677,13 @@ img#jogoIMG:hover {
 }
 
 #emotesEImagens {
+    width: 100%;
     text-align: center;
-    display: inline-block;
-    white-space: pre;
+    display: flex;
+    /* white-space: pre; */
+    height: 20rem;
+    align-items: center;
+    justify-content: center;
 }
 
 #emotesEImagens span {
@@ -1099,6 +1103,7 @@ img#jogoIMG:hover {
     #emotesEImagens {
         padding-top: .5rem;
         padding-bottom: .7rem;
+        height: 10rem;
     }
 
     .botoes_info {
@@ -1106,8 +1111,6 @@ img#jogoIMG:hover {
         flex-direction: row;
         width: 100%;
         padding-block: .5rem;
-        /* margin: auto; */
-        /* justify-content: center; */
         align-items: stretch;
         justify-content: center;
         text-align: center;
@@ -1119,7 +1122,6 @@ img#jogoIMG:hover {
     }
 
     .botoes_info>div {
-        /* padding-inline: 1rem; */
         align-items: center;
     }
 
@@ -1127,7 +1129,6 @@ img#jogoIMG:hover {
         width: 15vw;
         height: 13vw;
         max-width: 6.5rem;
-        /* min-height: 5rem; */
         padding-top: 0;
     }
 

@@ -1,3 +1,7 @@
+import { req_7TV_Api } from "./seteTvReqs.js"
+import { req_ffz_Api } from "./ffzReqs.js"
+import { req_bttv_Api } from "./bttvReqs.js"
+
 let usuario = ""
 let bttvEmotes = 'EXEC CODIGO'
 let seteTvEmotes = 'EXEC CODIGO'
@@ -99,18 +103,18 @@ fetch(`/api/env`, {
                 $('#tipoCanal span').text("Não Parceiro ou Afiliado")
             }
     
-            twitchRequests(`users/follows?to_id=${usuarioID}`, 'GET', headers).then(info => {
-                // let totalFollows = document.createTextNode(info['total'])
-                $('#seguidores span').text(info['total'])
-            })
-    
+            // Functionality is gone from twitch's API.
+            // twitchRequests(`users/follows?to_id=${usuarioID}`, 'GET', headers).then(info => {
+            //     $('#seguidores span').text(info['total'])
+            // }).catch(error => {
+            //     console.error("API request gone!")
+            // })
+            let equipe = ""
             twitchRequests(`teams/channel?broadcaster_id=${usuarioID}`, 'GET', headers).then(info => {
-                let equipe = ""
-                if (info['data'] == null) {
-                    equipe = "Sem Equipe"
-                } else {
-                    equipe = info['data'][0]['team_display_name']
-                }
+                equipe = info['data'][0]['team_display_name']
+                $('#equipeCanal span').text(equipe)
+            }).catch(error => {
+                equipe = "Sem Equipe"
                 $('#equipeCanal span').text(equipe)
             })
     
@@ -153,7 +157,7 @@ fetch(`/api/env`, {
                             console.log('Erro ao requisitar jogo: ', erro)
                         })
                     } else {
-                        console.log('erro')
+                        let issue = "Erro"
                     }
                 }
             })
@@ -219,24 +223,25 @@ fetch(`/api/env`, {
                         document.querySelector("#bttvEmotes").style.display = 'inline';
                     }
                 })
-    
-                document.querySelector('#seteTvBtn').addEventListener('click', () => {
-                    document.querySelector('.carrosel_itens').style.visibility = 'visible'
-                    document.querySelectorAll('.espaco_carrosel_seteTv li').forEach((li, index) => {
-                        li.classList.remove('esconder_li_direita')
-                        li.classList.remove('mostrar_li_direita')
-                        li.classList.remove('esconder_li_esqrd')
-                        li.classList.remove('mostrar_li_esqrd')
-                    })
-                    if (seteTvEmotes == 'EXEC CODIGO') {
-                        const req = new req_7TV_Api()
-                        req.emoteSetInfo(usuario)
-                    } else if (seteTvEmotes == '') {
-                        document.querySelector('#seteTvEmotes').style.display = 'flex';
-                    } else {
-                        document.querySelector('#seteTvEmotes').style.display = 'inline';
-                    }
-                })
+
+                // A API do 7tv não está funcionando no momento!
+                // document.querySelector('#seteTvBtn').addEventListener('click', () => {
+                //     document.querySelector('.carrosel_itens').style.visibility = 'visible'
+                //     document.querySelectorAll('.espaco_carrosel_seteTv li').forEach((li, index) => {
+                //         li.classList.remove('esconder_li_direita')
+                //         li.classList.remove('mostrar_li_direita')
+                //         li.classList.remove('esconder_li_esqrd')
+                //         li.classList.remove('mostrar_li_esqrd')
+                //     })
+                //     if (seteTvEmotes == 'EXEC CODIGO') {
+                //         const req = new req_7TV_Api()
+                //         req.emoteSetInfo(usuario)
+                //     } else if (seteTvEmotes == '') {
+                //         document.querySelector('#seteTvEmotes').style.display = 'flex';
+                //     } else {
+                //         document.querySelector('#seteTvEmotes').style.display = 'inline';
+                //     }
+                // })
     
     
     

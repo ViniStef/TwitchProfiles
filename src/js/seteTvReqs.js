@@ -1,12 +1,14 @@
+// A API do 7tv não está funcionando no momento!
+
 export class req_7TV_Api {
 
     emoteSetInfo(usuario) {
         // Variavel criarElemento serve pra não criar elementos 'li' extras a cada vez que o botão for clicado.
         let criarElemento = true;
-        seteTvEmotes = 'EXEC CODIGO'
+        let seteTvEmotes = 'EXEC CODIGO'
         document.querySelector('.campo_imgs_carregando').style.display = 'inline'
         document.querySelector('.sem_info_IMG').style.display = 'flex'
-        fetch(`https://7tv.io/v2/users/${usuario}`, {
+        fetch(`https://7tv.io/v3/users/${usuario}`, {
             method: 'GET'
         }).then(resposta => {
             return resposta.json()
