@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import helmet from "helmet";
 
 // Load environment variables from .env file
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
@@ -13,14 +14,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+app.use(helmet());
 
-// Expose environment variables to the client via an API endpoint
-app.get('/api/env', (req, res) => {
-  res.json({
-    authToken: token,
-    clientId: clientID
-  });
-});
+
 
 // Serve static files from the src directory
 app.use('/css', express.static(path.join(__dirname, 'css')));
