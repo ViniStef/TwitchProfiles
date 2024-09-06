@@ -1,12 +1,7 @@
 import { req_7TV_Api } from "./seteTvReqs.js"
 import { req_ffz_Api } from "./ffzReqs.js"
 import { req_bttv_Api } from "./bttvReqs.js"
-import dotenv from 'dotenv';
-// Load environment variables from .env file
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
-const token = process.env.AUTH_TOKEN;
-const clientID = process.env.CLIENT_ID;
 let usuario = ""
 let bttvEmotes = 'EXEC CODIGO'
 let seteTvEmotes = 'EXEC CODIGO'
@@ -35,11 +30,17 @@ const usuarioPath = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
 document.title = usuarioPath
 let headers;
 
+fetch(`/api/env`, {
+}).then(response => {
+    return response.json()
+}).then(data => { 
+    const authToken = data.authToken;
+    const clientId = data.clientId;
 
     headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
-        'Client-Id': `${clientID}`
+        'Client-Id': `${clientId}`
     }
 
     function allInfo(Usuario) {
@@ -308,6 +309,7 @@ let headers;
         allInfo(usuarioPath)
     })
     
+}).catch(erro => console.log('Erro na solicitação', erro))
 
 document.querySelector('.nav_div').addEventListener('click', () => {
     document.querySelector('.navbar_links').style.display = 'none';

@@ -1,10 +1,4 @@
-import dotenv from 'dotenv';
-// Load environment variables from .env file
-dotenv.config({ path: path.resolve(process.cwd(), '.env') });
-
-const token = process.env.AUTH_TOKEN;
-const clientID = process.env.CLIENT_ID;
-
+// Fetch the environment variables from the server
 let headers;
 
 let usuario = ""
@@ -25,12 +19,17 @@ function twitchRequests(linkParams, metodo, header) {
         })
     })
 }
-
+fetch(`/api/env`, {
+    }).then(response => {
+        return response.json()
+    }).then(data => {
+    const authToken = data.authToken;
+    const clientId = data.clientId;
 
     headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
-        'Client-Id': `${clientID}`
+        'Client-Id': `${clientId}`
     }
     $('#formBusca').submit(function (e) {
         e.preventDefault()
@@ -116,7 +115,9 @@ function twitchRequests(linkParams, metodo, header) {
             })
         }
     })
-
+    }).catch(error => {
+        console.error('Error fetching environment variables:', error);
+    })
 
 $('#buscaCanalOuUsuario').prop("disabled", true)
 

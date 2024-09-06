@@ -16,7 +16,13 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(helmet());
 
-
+// Expose environment variables to the client via an API endpoint
+app.get('/api/env', (req, res) => {
+  res.json({
+    authToken: token,
+    clientId: clientID
+  });
+});
 
 // Serve static files from the src directory
 app.use('/css', express.static(path.join(__dirname, 'css')));
