@@ -14,7 +14,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+      directives: {
+          'script-src': ["'self'", 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js']
+      }
+  }
+}));
 
 // Expose environment variables to the client via an API endpoint
 app.get('/api/env', (req, res) => {
