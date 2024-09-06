@@ -18,7 +18,8 @@ app.use(helmet({
   contentSecurityPolicy: {
       directives: {
           'script-src': ["'self'", 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'],
-          'connect-src': ["'self'", "https://twitchprofiles-2.onrender.com", "https://api.twitch.tv"]
+          'connect-src': ["'self'", "https://twitchprofiles-2.onrender.com", "https://api.twitch.tv"],
+          'img-src': ["'self", "https://static-cdn.jtvnw.net", "https://twitchprofiles-2.onrender.com", "https://api.twitch.tv"]
       }
   }
 }));
