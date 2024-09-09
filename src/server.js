@@ -7,6 +7,9 @@ import helmet from "helmet";
 // Load environment variables from .env file
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
+const token = process.env.AUTH_TOKEN;
+const clientID = process.env.CLIENT_ID;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -21,6 +24,13 @@ app.use(helmet({
   }
 }));
 
+// Expose environment variables to the client via an API endpoint
+app.get('/api/env', (req, res) => {
+  res.json({
+    authToken: token,
+    clientId: clientID
+  });
+});
 
 // Serve static files from the src directory
 app.use('/css', express.static(path.join(__dirname, 'css')));
@@ -49,3 +59,7 @@ app.use((err, req, res, next) => {
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
+
+export const tokens = () => {
+  return { token, clientID };
+};
