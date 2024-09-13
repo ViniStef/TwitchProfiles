@@ -6,7 +6,7 @@ Construído com JavaScript, HTML, CSS, Express e um pouco de jQuery.
 
 A versão atual está disponível em https://twitchprofiles-2.onrender.com
 
-Este foi um dos meus primeiros grandes projetos que construí. Comecei em 2021, um ano após iniciar minha jornada na programação. O Twitch sempre foi uma das minhas plataformas favoritas para assistir a jogos e conteúdos, e construir este site me permitiu não apenas desfrutar do processo, mas também aprender como funcionam as APIs e os sites responsivos.
+Este foi um dos meus primeiros grandes projetos que construí. Comecei em 2022, um ano após iniciar minha jornada na programação. O Twitch sempre foi uma das minhas plataformas favoritas para assistir a jogos e conteúdos, e construir este site me permitiu não apenas desfrutar do processo, mas também aprender como funcionam as APIs e os sites responsivos.
 
 As informações são obtidas fazendo requisições à API do Twitch. Os emotes e informações do BetterTTV, FrankerFaceZ e 7TV (atualmente desativado) são buscados por suas respectivas APIs.
 
@@ -20,7 +20,7 @@ Built with JavaScript, HTML, CSS, Express and a bit of jQuery.
 
 The current version is live at https://twitchprofiles-2.onrender.com
 
-This was one of my first big projects that I built. I started back in 2021, one year after I began my programming journey. Twitch has always been one of my favorite platforms to watch games and content, and building this website has enabled me to not only enjoy the process but also learn how APIs and responsive websites work.
+This was one of my first big projects that I built. I started back in 2022, one year after I began my programming journey. Twitch has always been one of my favorite platforms to watch games and content, and building this website has enabled me to not only enjoy the process but also learn how APIs and responsive websites work.
 
 The information is obtained by making API requests to the Twitch API. The BetterTTV, FrankerFaceZ, and 7TV (currently disabled) emotes and information are fetched by their respective APIs.
 
