@@ -29,7 +29,7 @@ export const getSubBadges = async (broadcaster_id) => {
         return badges;
 
     } catch (error) {
-        console.log(error);
+        console.log("Error while trying to get subscribe badges: ", error);
         
     }
 
