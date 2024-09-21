@@ -1,8 +1,8 @@
-**TwitchProfiles**
+**TwitchProfiles** | ## About The New Update -> CHANGELOD.md
 
 ## Português
 Um site para conferir usuários e streamers do Twitch!
-Construído com JavaScript, HTML, CSS, Express e um pouco de jQuery.
+Construído com JavaScript, HTML, CSS, e Express.
 
 A versão atual está disponível em https://twitchprofiles-2.onrender.com
 
@@ -16,7 +16,7 @@ ___________________________________________
 
 ## English
 A website to check out Twitch users and streamers!
-Built with JavaScript, HTML, CSS, Express and a bit of jQuery.
+Built with JavaScript, HTML, CSS, and Express.
 
 The current version is live at https://twitchprofiles-2.onrender.com
 
