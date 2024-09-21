@@ -1,239 +1,288 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Informações sobre streamers e usuários da plataforma Twitch.Tv!"
+    />
+    <meta name="keywords" content="Twitch, Streamer, Emotes" />
+    <meta property="og:title" content="Twitch Profiles" />
+    <meta
+      property="og:description"
+      content="Informações sobre streamers e usuários da plataforma Twitch.Tv!"
+    />
+    <meta
+      property="og:image"
+      content="https://twitchprofiles-2.onrender.com/imgs/twitchprofiles-logo.png"
+    />
+    <meta property="og:url" content="https://twitchprofiles-2.onrender.com" />
+    <title>Twitch Profiles</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/homepage.css" />
+    <link rel="stylesheet" href="../css/main-carousel.css" />
+    <link
+      rel="shortcut icon"
+      href="../imgs/twitchprofiles-logo.png"
+      type="image/x-icon"
+    />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TwitchProfiles - Pesquisar</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/twitchBusca.css">
-    <link rel="stylesheet" href="../css/carroselPrincipal.css">
-    <link rel="icon" href="../imgs/logoMain.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favico/favicon-16x16.png">
-    <link rel="manifest" href="../favico/site.webmanifest">
-
-    
-</head>
-
-<body>
-    <nav class="navbar_topo">
-        <div class="navbar_div"></div>
-        <button id="navbarLista"></button>
-        <img id="logo" src="../imgs/logoMain.svg">
-        <ul class="navbar_links">
-
-            <li><a href="#infoTxt" id="infoLink">Informações</a></li>
-            <li><a href="#twitch" id="twitchLink">Twitch</a></li>
-            <li><a href="#bttv" id="bttvLink">BetterTTV</a></li>
-
-            <!-- // A API do 7tv não está funcionando no momento! -->
-            <!-- <li><a href="#seteTv" id="7tvLink">7TV</a></li> -->
-            <li><a href="#ffz" id="ffzLink">FrankerFaceZ</a></li>
-        </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+  </head>
+  <body>
+    <nav class="main__nav">
+      <div class="nav__fixer"></div>
+      <button id="nav__toggle"></button>
+      <img id="nav__logo" src="../imgs/twitchprofiles-logo.png" />
+      <ul class="nav__list">
+        <li>
+          <a href="#services__description" id="info__link">Informações</a>
+        </li>
+        <li><a href="#twitch__description" id="twitch__link">Twitch</a></li>
+        <li><a href="#bttv__description" id="bttv__link">BetterTTV</a></li>
+        <li><a href="#ffz__description" id="ffz__link">FrankerFaceZ</a></li>
+      </ul>
     </nav>
 
-    <div class="main_div">
-
-        <div class="itens_busca">
-
-            <div class="titulo_busca_inputs">
-                <h1 id="tituloBusca"><span class="bckgrnd-black5rad">Procure por um canal ou usuário</span></h1>
-                <form id="formBusca">
-                    <!-- Need this div to go underneath the inputs.fixes the problem when clicking on the sides of the inputs and not increasing the opacity. -->
-                    <div class="form_div"></div>
-                    <div class="busca_inputs">
-                        <input id="canalOuUsuario" placeholder="Canal ou Usuário" type="text">
-                        <input id="buscaCanalOuUsuario" value="Search" type="submit">
-                    </div>
-                </form>
+    <div class="container">
+      <div class="content__search">
+        <div class="search__items">
+          <h1 id="items__header">
+            <span class="standard__background"
+              >Procure por um canal ou usuário</span
+            >
+          </h1>
+          <form id="search__form">
+            <div class="form__fixer"></div>
+            <div class="form__inputs">
+              <input
+                id="input__search"
+                placeholder="Canal ou Usuário"
+                type="text"
+              />
+              <input id="input__submit" value="Search" type="submit" />
             </div>
-
-            <div class="result_busca_itens">
-                <div class="result_busca">
-                    <div class="carregando"></div>
-                    <div class="campo_result_busca_itens">
-                        <button id="fecharBusca"></button>
-                        <h3 class="txt_titulo">Resultado Exato</h3>
-                        <div id="resultExato"></div>
-                        <h3 class="txt_titulo">Resultados Similares</h3>
-                        <div id="canaisEncontrado"></div>
-                    </div>
-                </div>
-            </div>
-
+          </form>
         </div>
 
-        <div class="abaixo_busca">
-            <div class="exemplos_div">
-                <h1 id="exemplosH1">Exemplos</h1>
+        <div class="results__container">
+          <div class="result__wrapper">
+            <div class="result__loading"></div>
+            <div class="result__infos">
+              <button id="infos__close"></button>
+              <h3 class="infos__header">Resultado Exato</h3>
+              <div id="infos__match"></div>
+              <h3 class="infos__header">Resultados Similares</h3>
+              <div id="infos__similar"></div>
             </div>
+          </div>
+        </div>
+      </div>
 
-
-            <div class="carrosel_itens">
-                <div class="carrosel_carregando"></div>
-                <button id="slideEsquerda">
-                    <img src="" alt="Esquerda">
-                </button>
-
-                <!-- Current not working because of the routes! -->
-                <div class="espaco_carrosel_container">
-                    <ul class="espaco_carrosel">
-                        <li class="carrosel_slide">
-                            <iframe id="slide1" src="https://twitchprofiles-2.onrender.com/The_Happy_Hob" alt=""
-                                style="display: none;"></iframe>
-                        </li>
-                        <li class="carrosel_slide">
-                            <iframe id="slide2" src="https://twitchprofiles-2.onrender.com/Distortion2" alt=""
-                                style="display: none;"></iframe>
-                        </li>
-                        <li class="carrosel_slide">
-                            <iframe id="slide3" src="https://twitchprofiles-2.onrender.com/LIRIK" alt=""
-                                style="display: none;"></iframe>
-                        </li>
-                        <li class="carrosel_slide">
-                            <iframe id="slide4" src="https://twitchprofiles-2.onrender.com/gaules" alt=""
-                                style="display: none;"></iframe>
-                        </li>
-                        <li class="carrosel_slide">
-                            <iframe id="slide5" src="https://twitchprofiles-2.onrender.com/alanzoka" alt=""
-                                style="display: none;"></iframe>
-                        </li>
-                    </ul>
-                </div>
-                
-                <button id="slideDireita">
-                    <img src="" alt="Direita">
-                </button>
-            </div>
-
-            <div class="info_txt" id="infoTxt" tabindex="0">
-
-                <div id="twitch" tabindex="0">
-                    <a href="https://twitch.tv" class="bckgrnd-black5rad redirecionar" target="_blank"><img
-                            class="img_ir"
-                            src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="" height="" fill="%23668bbb" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/><path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/></svg>'></a>
-                    <img style="visibility: hidden;" id="twitchImg" src="../imgs/twitchLogo.svg" alt="Inscrito Twitch"
-                        width="300px" height="300px">
-                    <div class="infoNome_txt">
-                        <h1>Twitch</h1>
-                        <p>
-                            Twitch é onde milhões de pessoas se juntam todos os dias para conversar, interagir e
-                            juntos fazerem seu próprio entretenimento.
-                            Atualmente a Twitch é a plataforma principal de transmissões ao vivo, permitindo aos telespectadores escolherem o que gostariam de assistir e conversar com aqueles também interessados no mesmo assunto.
-                        </p>
-                    </div>
-
-                </div>
-
-                <div id="bttv" tabindex="0">
-
-                    <a href="http://betterttv.com" class="bckgrnd-black5rad redirecionar" target="_blank"><img
-                            class="img_ir"
-                            src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="" height="" fill="%23668bbb" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/><path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/></svg>'></a>
-                    <img style="visibility: hidden;" src="../imgs/bttvLogo.svg" id="bttvImg" alt="BetterTTV" width="300px"
-                        height="300px">
-                    <div class="infoNome_txt">
-                        <h1>BetterTTV</h1>
-                        <p>BetterTTV aprimora a Twitch e o YouTube com novas funcionalidades, emotes e muito mais.
-                            Também conhecido como "BTTV" ou "BetterTTV" pela comunidade, a BetterTTV visa adicionar
-                            novos
-                            recursos a Twitch e ao YouTube (em beta).
-                            <br>
-                            Alguma das funcionalidades incluem:
-                            <br>
-                            Emotes extras no chat - BetterTTV emotes globais e emotes customizáveis por canal,
-                            menu de emotes melhorado,
-                            palavras-chave personalizadas para palavras, usuários, e emblemas do chat,
-                            dividir linhas do chat para melhor leitura,
-                            ver mensagens e links excluídos,
-                            chat Anônimo - entrar em um canal sem exibir seu nick na lista de usuários,
-                            resgatar automaticamente bônus de pontos de canais, drops e moments.
-                        </p>
-                    </div>
-                </div>
-
-                <div id="ffz" tabindex="0">
-                    <img style="visibility: hidden;" id="ffzImg" src="../imgs/ffzLogo.svg" alt="FrankerFaceZ" width="300px"
-                        height="300px">
-                    <a href="https://frankerfacez.com" class="bckgrnd-black5rad redirecionar" target="_blank"><img
-                            class="img_ir"
-                            src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="" height="" fill="%23668bbb" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/><path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/></svg>'></a>
-                    <!-- <a href="http://google.com" target="_blank"> -->
-
-                    <!-- </a> -->
-                    <div class="infoNome_txt">
-                        <h1>FrankerFaceZ</h1>
-                        <p>Use uma variedade de reações únicas na Twitch!
-                            FrankerFaceZ é um conjunto de melhorias para a Twitch que proporciona emotes de canal
-                            customizados, Twitch layouts como diferente temas e fontes, customização de chat,
-                            configurações
-                            avançadas de moderação do chat, e muitos outros recursos elaborados para fazer a Twitch mais
-                            agradável e com uma experiência social melhor para você e os canais que você ama.</p>
-                    </div>
-
-                </div>
-                <!-- A API do 7tv não está funcionando no momento! -->
-                <!-- <div id="seteTv" tabindex="0">
-                    <a href="https://7tv.app" class="bckgrnd-black5rad redirecionar" target="_blank"><img class="img_ir"
-                            src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="" height="" fill="%23668bbb" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/><path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/></svg>'></a>
-                    <img style="visibility: hidden;" id="seteTvImg" src="../imgs/7TVLogo.svg" alt="7TV" width="300px"
-                        height="300px">
-                    
-                    
-                    
-                     
-                    
-                    <div class="infoNome_txt">
-                        <h1>7TV</h1>
-                        <p>
-                            Melhore sua experiência como espectador na Twitch e YouTube com novas funcionalidades, emotes, visuais e performance.
-                            A extensão 7TV permite ao usuário ver emotes no chat em aproximadamente um milhão de canais na Twitch e YouTube! 
-                            Não apenas isso, mas também dezenas de novos recursos, melhoras de desempenho e opções visuais para realmente criar sua própria experiência.
-                            7TV também oferece suporte a outras extensões populares prontas para uso.
-
-                        </p>
-                    </div>
-
-                </div> -->
-
-
-
-
-            </div>
+      <div class="content__display">
+        <div class="header__wrapper">
+          <h1 id="examples__header">Exemplos</h1>
         </div>
 
+        <div class="carousel__items">
+          <div class="loading__carousel"></div>
+          <button id="slide__left">
+            <img src="" alt="Esquerda" />
+          </button>
+
+          <div class="carousel__container">
+            <a class="visit__user" target="_blank" href="">Visitar Perfil</a>
+            <ul class="carousel__list">
+              <li class="carousel__item">
+                <iframe
+                  class="iframe__item"
+                  id="slide__1"
+                  src="https://twitchprofiles-2.onrender.com/The_Happy_Hob"
+                  alt=""
+                  style="display: none"
+                ></iframe>
+              </li>
+              <li class="carousel__item">
+                <iframe
+                  class="iframe__item"
+                  id="slide__2"
+                  src="https://twitchprofiles-2.onrender.com/Distortion2"
+                  alt=""
+                  style="display: none"
+                ></iframe>
+              </li>
+              <li class="carousel__item">
+                <iframe
+                  class="iframe__item"
+                  id="slide__3"
+                  src="https://twitchprofiles-2.onrender.com/LIRIK"
+                  alt=""
+                  style="display: none"
+                ></iframe>
+              </li>
+              <li class="carousel__item">
+                <iframe
+                  class="iframe__item"
+                  id="slide__4"
+                  src="https://twitchprofiles-2.onrender.com/gaules"
+                  alt=""
+                  style="display: none"
+                ></iframe>
+              </li>
+              <li class="carousel__item">
+                <iframe
+                  class="iframe__item"
+                  id="slide__5"
+                  src="https://twitchprofiles-2.onrender.com/alanzoka"
+                  alt=""
+                  style="display: none"
+                ></iframe>
+              </li>
+            </ul>
+          </div>
+
+          <button id="slide__right">
+            <img src="" alt="Direita" />
+          </button>
+        </div>
+
+        <div
+          class="services__description"
+          id="services__description"
+          tabindex="0"
+        >
+          <div id="twitch__description" tabindex="1">
+            <a
+              href="https://twitch.tv"
+              class="standard__background redirect"
+              target="_blank"
+              ><img
+                class="redirect__img"
+                src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="" height="" fill="%23668bbb" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/><path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/></svg>'
+            /></a>
+            <img
+              style="visibility: hidden"
+              id="twitch__img"
+              src="../imgs/twitch-logo.svg"
+              alt="Inscrito Twitch"
+              width="300px"
+              height="300px"
+            />
+            <div class="description__texts">
+              <h1>Twitch</h1>
+              <p>
+                Twitch é onde milhões de pessoas se juntam todos os dias para
+                conversar, interagir e juntos fazerem seu próprio
+                entretenimento. Atualmente a Twitch é a plataforma principal de
+                transmissões ao vivo, permitindo aos telespectadores escolherem
+                o que gostariam de assistir e conversar com aqueles também
+                interessados no mesmo assunto.
+              </p>
+            </div>
+          </div>
+
+          <div id="bttv__description" tabindex="2">
+            <a
+              href="http://betterttv.com"
+              class="standard__background redirect"
+              target="_blank"
+              ><img
+                class="redirect__img"
+                src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="" height="" fill="%23668bbb" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/><path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/></svg>'
+            /></a>
+            <img
+              style="visibility: hidden"
+              src="../imgs/bttv-logo.svg"
+              id="bttv__img"
+              alt="BetterTTV"
+              width="300px"
+              height="300px"
+            />
+            <div class="description__texts">
+              <h1>BetterTTV</h1>
+              <p>
+                BetterTTV aprimora a Twitch e o YouTube com novas
+                funcionalidades, emotes e muito mais. Também conhecido como
+                "BTTV" ou "BetterTTV" pela comunidade, a BetterTTV visa
+                adicionar novos recursos a Twitch e ao YouTube (em beta).
+                <br />
+                Alguma das funcionalidades incluem:
+                <br />
+                Emotes extras no chat - BetterTTV emotes globais e emotes
+                customizáveis por canal, menu de emotes melhorado,
+                palavras-chave personalizadas para palavras, usuários, e
+                emblemas do chat, dividir linhas do chat para melhor leitura,
+                ver mensagens e links excluídos, chat Anônimo - entrar em um
+                canal sem exibir seu nick na lista de usuários, resgatar
+                automaticamente bônus de pontos de canais, drops e moments.
+              </p>
+            </div>
+          </div>
+
+          <div id="ffz__description" tabindex="3">
+            <a
+              href="https://frankerfacez.com"
+              class="standard__background redirect"
+              target="_blank"
+              ><img
+                class="redirect__img"
+                src='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="" height="" fill="%23668bbb" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/><path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/></svg>'
+            /></a>
+            <img
+              style="visibility: hidden"
+              id="ffz__img"
+              src="../imgs/ffz-logo.svg"
+              alt="FrankerFaceZ"
+              width="300px"
+              height="300px"
+            />
+
+            <div class="description__texts">
+              <h1>FrankerFZ</h1>
+              <p>
+                Use uma variedade de reações únicas na Twitch! FrankerFaceZ é um
+                conjunto de melhorias para a Twitch que proporciona emotes de
+                canal customizados, Twitch layouts como diferente temas e
+                fontes, customização de chat, configurações avançadas de
+                moderação do chat, e muitos outros recursos elaborados para
+                fazer a Twitch mais agradável e com uma experiência social
+                melhor para você e os canais que você ama.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <footer>
-        <div id="footer">
-            <div class="div_footer_p">
-                <p>Não afiliado com a Twitch, 7TV, BetterTwitchTV ou FrankerFaceZ.</p>
-                <br>
-                <p>Para informações e o código-fonte deste site, acesse o meu GitHub ou LinkedIn!</p>
-            </div>
-
-            <div id="footerAnchors">
-                <a class="footer_img" id="githubAnchor" href="https://github.com/ViniStef" target="_blank"></a>
-                <a class="footer_img" id="linkedinAnchor" href="https://linkedin.com/in/vinicius-steflitsch-b19a47259" target="_blank"></a>
-            </div>
-
+      <div id="footer__container">
+        <div class="footer__text">
+          <p>Não afiliado com a Twitch, 7TV, BetterTwitchTV ou FrankerFaceZ.</p>
+          <br />
+          <p>
+            Para informações e o código-fonte deste site, acesse o meu GitHub ou
+            LinkedIn!
+          </p>
         </div>
+
+        <div id="footer__redirects">
+          <a
+            class="footer__img"
+            id="github__redirect"
+            href="https://github.com/ViniStef"
+            target="_blank"
+          ></a>
+          <a
+            class="footer__img"
+            id="linkedin__redirect"
+            href="https://linkedin.com/in/vinicius-steflitsch-b19a47259"
+            target="_blank"
+          ></a>
+        </div>
+      </div>
     </footer>
 
-    </div>
-
-    <script type="module" src="../js/canalOuUsuarioBusca.js"></script>
-    <script type="module" src="../js/carroselMain.js"></script>
-    <script type="module" src="../js/campoBusca.js"></script>
-    <script type="module" src="../js/animacaoMainInfo.js"></script>
-    <script type="module" src="../js/loadingFixes.js"></script>
-
-
-
-</body>
-
+    <script type="module" src="../js/homepage/index.js"></script>
+  </body>
 </html>
