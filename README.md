@@ -1,4 +1,4 @@
-**TwitchProfiles** | ## About The New Update -> CHANGELOD.md
+**TwitchProfiles** | ## About The New Update -> CHANGELOG.md
 
 ## Português
 Um site para conferir usuários e streamers do Twitch!
