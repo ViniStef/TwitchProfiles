@@ -96,7 +96,7 @@ const updateOfflineImage = (offline_image_url) => {
 
         const img = document.createElement("img");
         img.src = offline_image_url;
-        img.className = 'offlineIMG';
+        img.className = 'offline__img';
         offImg.appendChild(img);
     }
 };

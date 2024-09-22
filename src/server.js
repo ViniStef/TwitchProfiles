@@ -69,6 +69,7 @@ app.post('/twitch-data', async (req, res) => {
 
   } catch (error) {
     console.error('Error fetching data from Twitch:', error);
+    res.json("404");
   }
 })
 
