@@ -1,6 +1,5 @@
 import { getAndDisplayBttvEmotes } from "./bttv-data/bttv-settings.js";
 import { getAndDisplayFfzEmotes } from "./ffz-data/ffz-settings.js";
-import { btnFocus } from "./profile-settings/btn-focus.js";
 import { getNewUserFromProfile } from "./profile-settings/new-user.js";
 import { handleDropdownList, modifyNavbarLinks } from "./profile-settings/profile-dropdown.js";
 import { handleScreenSizes } from "./profile-settings/screen-sizes.js";
@@ -17,8 +16,6 @@ const runAllProfile = async () => {
     const basicData = await fetchTwitchUserData(usuarioPath);
     
     const { id, login } = basicData;
-
-    btnFocus();
     
     await getExtraUserInfo(login);
     await getChannelEmotes(id);
