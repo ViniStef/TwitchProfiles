@@ -46,7 +46,6 @@ export const handleSearchAnimation = () => {
         document.querySelector('.content__display').classList.remove('focused__opacity');
         resultado.classList.add('remove__animation');
         resultado.classList.remove('show__search');
-        document.querySelector('.results__container').classList.remove('searched');
     });
 };
 
