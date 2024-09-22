@@ -1,26 +1,25 @@
 export const iframeRedirect = () => {
     const iframes = document.querySelectorAll(".iframe__item");
-    const firstElement = iframes[0];
+    const firstIframe = iframes[0];
 
     iframes.forEach((iframe) => {
-        const element = iframe.contentWindow?.document.querySelector(".visit__user");
-        
-        if (!element) return;
-
         iframe.addEventListener("mouseover", () => {
-            const computedStyle = window.getComputedStyle(iframe);
+            let message = 'hide';
 
-            if (iframe == firstElement) {
-                if (computedStyle.display == "inline-block" || computedStyle.zIndex == "999" || iframe.style.display == "inline-block") {
-                    element.style.visibility = "visible";
+            const computedStyle = window.getComputedStyle(iframe);
+            if (iframe === firstIframe) {
+                if (computedStyle.display === "inline-block" || computedStyle.zIndex === "999") {
+                    message = "show";
                 }
-            } else if (computedStyle.zIndex == "999") {
-                element.style.visibility = "visible";
+            } else if (computedStyle.zIndex === "999") {
+                message = "show";
             }
+
+            iframe.contentWindow.postMessage(message, 'https://twitchprofiles-2.onrender.com');
         });
 
         iframe.addEventListener("mouseleave", () => {
-            element.style.visibility = "hidden";
+            iframe.contentWindow.postMessage('hide', 'https://twitchprofiles-2.onrender.com');
         });
     });
 };
