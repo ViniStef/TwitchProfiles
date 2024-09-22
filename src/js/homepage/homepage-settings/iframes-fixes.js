@@ -7,19 +7,6 @@ export const handleIframe = () => {
     });
 
     handleIframeRedirect();
-
-    window.addEventListener('message', (event) => {
-        if (event.origin !== 'https://https://twitchprofiles-2.onrender.com') return;
-    
-        const element = document.querySelector('.visit__user');
-        if (!element) return;
-    
-        if (event.data === 'show') {
-            element.style.visibility = 'visible';
-        } else if (event.data === 'hide') {
-            element.style.visibility = 'hidden';
-        }
-    });
 };
 
 const handleIframeRedirect = () => {
