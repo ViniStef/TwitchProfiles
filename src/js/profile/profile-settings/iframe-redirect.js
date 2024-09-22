@@ -7,21 +7,19 @@ export const iframeRedirect = () => {
             const element = iframe.contentWindow.document.querySelector(".visit__user");
 
             if (!element) {
-                console.log(`Iframe ${index} does not have .visit__user`);
-                return;  // Exit if the element doesnt exist
+                return; 
             }
 
             iframe.addEventListener("mouseover", () => {
-                const computedStyle = window.getComputedStyle(iframe);
+                
 
                 if (iframe === firstElement) {
-                    console.log(`First iframe detected, styles: ${computedStyle.display}, z-index: ${computedStyle.zIndex}`);
-                    if (computedStyle.display === "inline-block" || computedStyle.zIndex === "999") {
+                    if (iframe.style.display === "inline-block" || iframe.style.zIndex === "999") {
                         element.style.visibility = "visible";
                     } else {
                         console.log("Conditions not met for the first iframe.");
                     }
-                } else if (computedStyle.zIndex === "999") {
+                } else if (iframe.style.zIndex === "999") {
                     element.style.visibility = "visible";
                 }
             });
